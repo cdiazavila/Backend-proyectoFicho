@@ -1,8 +1,10 @@
+const { Router } = require('express');
 const express = require('express');
 const router = express.Router();
 const controllerEstudiantes= require('../controllers/controllerEstudiantes');
 const controllerFicho = require('../controllers/controllerFichos');
 const controlleSede = require('../controllers/controllerSede');
+const controlleVenta=require('../controllers/controllerVenta');
 
 module.exports = function(){
   
@@ -32,10 +34,27 @@ router.get('/ficho',controllerFicho.obtenerFichos);
 
 // RUTAS PARA LA SEDE 
 // Obtener informacion de la sede 
-router.get('/sede',controlleSede.odtenerSede)
+router.get('/sede',controlleSede.odtenerSedes)
 // Guardar sedes 
 router.post('/sede',controlleSede.addSede)
+// buscar sede con id
+router.get('/sede/:id',controlleSede.odtenerSede)
+// Eliminar con id 
+router.delete('/sede/:id',controlleSede.eliminarSede)
+// Update con id 
+router.put('/sede/:id',controlleSede.updateSede)
 
+
+// RUTAS PARA LA TABLA VENTAS
+
+//ADD UNA VENTA 
+router.post('/venta',controlleVenta.addventas)
+//OBTENER TODO LOD DATOS
+router.get('/venta',controlleVenta.obtenertodos)
+// Buscar las ventas por sedes 
+router.get('/venta/:id',controlleVenta.obtenerVentasSedes)
+// Buscar las ventas por estudiantes
+router.get('/ventas/:idE',controlleVenta.obtenerVentasEstuden)
 
     return router;
 
