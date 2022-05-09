@@ -26,6 +26,9 @@ router.delete('/estudiantes/:id',controllerEstudiantes.eliminarEstudiante);
 // ruta para update estudiante
 router.put('/estudiantes/:id',controllerEstudiantes.updateEstudiante);
 
+// motodo login estudiante 
+router.post('/login',controllerEstudiantes.loginUser);
+
 //RUTAS PARA LOS FICHOS 
 //Actualizar Fichos
 router.put('/ficho/:id',controllerFicho.updateFicho);
